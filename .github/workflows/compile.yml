@@ -16,9 +16,9 @@ jobs:
         run: |
           source /etc/profile.d/devkit-env.sh
           make
-          
+
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
           name: TicoRemapper-Build
-          path: TicoRemapper.nro[cite: 2]
+          path: TicoRemapper.nro
