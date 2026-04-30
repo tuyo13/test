@@ -1,12 +1,11 @@
-name: Compilation Switch
+name: Build
 
 on: [push]
 
 jobs:
-  build_nro:
+  build:
     runs-on: ubuntu-latest
     container: devkitpro/devkita64:latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -20,5 +19,5 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: TicoRemapper-Build
+          name: MonApplicationSwitch
           path: TicoRemapper.nro
