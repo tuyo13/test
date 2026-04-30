@@ -1,23 +1,24 @@
 name: Compilation Switch
 
-on: [push] # Se déclenche à chaque fois que vous modifiez un fichier
+on: [push]
 
 jobs:
   build_nro:
     runs-on: ubuntu-latest
-    container: devkitpro/devkita64:latest # Image contenant libnx et les outils Switch
+    container: devkitpro/devkita64:latest
 
     steps:
-      - name: Récupérer le code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Compiler le projet
+      - name: Build
+        shell: bash
         run: |
           source /etc/profile.d/devkit-env.sh
-          make # Lance la compilation définie dans votre Makefile[cite: 2]
-
-      - name: Sauvegarder le binaire (.nro)
+          make
+          
+      - name: Upload
         uses: actions/upload-artifact@v4
         with:
           name: TicoRemapper-Build
-          path: TicoRemapper.nro # Nom défini par la variable TARGET dans le Makefile[cite: 2]
+          path: TicoRemapper.nro[cite: 2]
